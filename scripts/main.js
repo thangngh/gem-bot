@@ -404,17 +404,29 @@ function StartTurn(param) {
     currentPlayerId = param.getInt('currentPlayerId');
     visualizer.snapShot();
 
+    SEA_SPIRIT_BOT = this.botPlayer.heroes[0];
+    FIRE_SPRIT_BOT = this.botPlayer.heroes[1];
+    SEA_GOD = this.botPlayer.heroes[2];
+
     Object.keys(this.botPlayer.heroes).forEach(function (key) {
         console.log(key, this.botPlayer.heroes[key]);
     });
 
     Object.keys(this.enemyPlayer.heroes).forEach(function (key) {
-        console.log(key, this.enemyPlayer.heroes[key]);
+        console.log(this.enemyPlayer.heroes[key].id);
+        if (
+            FIRE_SPRIT_BOT.isAlive() &&
+            FIRE_SPRIT_BOT.isFullMana() &&
+            (this.enemyPlayer.heroes[key].id === 'CERBERUS' ||
+                this.enemyPlayer.heroes[key].id === 'THUNDER_GOD' ||
+                this.enemyPlayer.heroes[key].id === 'SEA_GOD')
+        ) {
+            SendCastSkill(FIRE_SPRIT_BOT, {
+                targetId: this.enemyPlayer.heroes[key].id.toString(),
+            });
+        }
     });
 
-    SEA_SPIRIT_BOT = this.botPlayer.heroes[0];
-    FIRE_SPRIT_BOT = this.botPlayer.heroes[1];
-    SEA_GOD = this.botPlayer.heroes[2];
     setTimeout(function () {
         if (!isBotTurn()) {
             trace('not isBotTurn');

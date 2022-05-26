@@ -59,17 +59,23 @@ class Grid {
                 );
             });
         }
+        if (FIRE_SPRIT_BOT.isAlive()) {
+            matchGemSE = listMatchGem.find((gemMatch) => {
+                return (
+                    gemMatch.type === GemType.RED ||
+                    gemMatch.type === GemType.PURPLE
+                );
+            });
+        }
         if (matchGemSE) {
             return matchGemSE.getIndexSwapGem();
         }
 
         let matchGem = listMatchGem.find((gemMatch) => {
             return (
-                gemMatch.type === GemType.RED ||
-                gemMatch.type === GemType.PURPLE ||
                 gemMatch.type === GemType.BLUE ||
                 gemMatch.type === GemType.BROWN ||
-                gemMatch.type === GemType.SWORD
+                (gemMatch.type === GemType.SWORD && gemMatch.sizeMatch > 3)
             );
         });
 
