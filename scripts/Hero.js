@@ -1,42 +1,41 @@
 const HeroIdEnum = {
-    THUNDER_GOD : 0,
-    MONK : 1,
-    AIR_SPIRIT : 2,
-    SEA_GOD : 3,
-    MERMAID : 4,
-    SEA_SPIRIT : 5,
-    FIRE_SPIRIT : 6,
-    CERBERUS : 7,
-    DISPATER : 8,
-    ELIZAH : 9,
-    TALOS : 10,
-    MONKEY:11,
-    GUTS:12,
-    
-    SKELETON : 100,
-    SPIDER:101,
-    WOLF:102,
-    BAT:103,
-    BERSERKER:104,
-    SNAKE:105,
-    GIANT_SNAKE:106
+    THUNDER_GOD: 0, //Zeus
+    MONK: 1, //Orthur
+    AIR_SPIRIT: 2, //Nefia
+    SEA_GOD: 3, // Magni
+    MERMAID: 4, //Poko
+    SEA_SPIRIT: 'SEA_SPIRIT', //Terra
+    FIRE_SPIRIT: 6, //Sigmund
+    CERBERUS: 7, //Cerberus
+    DISPATER: 8, //Fate
+    ELIZAH: 9, //Eqypt queen
+    TALOS: 10,
+    MONKEY: 11,
+    GUTS: 12,
+
+    SKELETON: 100, //Skeleton
+    SPIDER: 101,
+    WOLF: 102,
+    BAT: 103,
+    BERSERKER: 104,
+    SNAKE: 105,
+    GIANT_SNAKE: 106,
 };
-  
 
 class Hero {
     constructor(objHero) {
         this.objHero = objHero;
-        this.playerId = objHero.getInt("playerId");
-        this.id = objHero.getUtfString("id");
+        this.playerId = objHero.getInt('playerId');
+        this.id = objHero.getUtfString('id');
         //this.name = id.name();
-        this.attack = objHero.getInt("attack");
-        this.hp = objHero.getInt("hp");
-        this.mana = objHero.getInt("mana");
-        this.maxMana = objHero.getInt("maxMana");
+        this.attack = objHero.getInt('attack');
+        this.hp = objHero.getInt('hp');
+        this.mana = objHero.getInt('mana');
+        this.maxMana = objHero.getInt('maxMana');
 
         this.gemTypes = [];
         this.gems = [];
-        let arrGemTypes = objHero.getSFSArray("gemTypes");
+        let arrGemTypes = objHero.getSFSArray('gemTypes');
         for (let i = 0; i < arrGemTypes.size(); i++) {
             const gemName = arrGemTypes.getUtfString(i);
             this.gemTypes.push(gemName);
@@ -45,10 +44,10 @@ class Hero {
     }
 
     updateHero(objHero) {
-        this.attack = objHero.getInt("attack");
-        this.hp = objHero.getInt("hp");
-        this.mana = objHero.getInt("mana");
-        this.maxMana = objHero.getInt("maxMana");
+        this.attack = objHero.getInt('attack');
+        this.hp = objHero.getInt('hp');
+        this.mana = objHero.getInt('mana');
+        this.maxMana = objHero.getInt('maxMana');
     }
 
     isAlive() {
